@@ -174,9 +174,11 @@ class PepeDrawer:
         self.ShapeComand = ShapeComand
         self.altTela = altTela
         self.largTela = largTela
-        self.divAlt = int((altTela/20)/2)  
-        self.divLarg = int((largTela/20)/2)      
+        self.divAlt = int((altTela/35)/2)  
+        self.divLarg = int((largTela/35)/2)      
         self.screen = pygame.display.set_mode((largTela, altTela))
+        pygame.display.set_caption("PEPESMACHINE")
+
 
         #SavePepes.append(((self.FirstX,self.FirstY),(self.SecX,self.SecY)))
 
@@ -306,8 +308,8 @@ class StartPepeFunction:
     def __init__(self,largTela,altTela):
         self.altTela = altTela
         self.largTela = largTela
-        self.divAlt = int((altTela/20)/2)  
-        self.divLarg = int((largTela/20)/2) 
+        self.divAlt = int((altTela/35)/2)  
+        self.divLarg = int((largTela/35)/2) 
         self.RandomNum = [2,3,4,5]
         self.Xpoints = []
         self.start()
@@ -339,31 +341,7 @@ class StartPepeFunction:
                 ### Save Here The Pepe Reference Coordinates
                 ###
                 y = y + NewNum
-            print(self.Xpoints,self.Ypoints) 
-
-
-class GridGenerator:    
-    def __init__(self,largTela,altTela):
-        self.background_colour = (255,255,255)
-        self.screen = pygame.display.set_mode((largTela, altTela))
-        self.name = pygame.display.set_caption('RLBB')
-        self.screen.fill(self.background_colour)
-        self.altTela = altTela
-        self.largTela = largTela
-        self.divAlt = int((altTela/20)/2)  
-        self.divLarg = int((largTela/20)/2) 
-        
-
-    def draw(self):    
-        for y in range(self.divAlt):
-            for x in range(self.divLarg):
-                self.PatColor = random.choice(FinalPepeColors)
-                imaa = pygame.draw.rect(self.screen,self.PatColor,((self.largTela/self.divLarg)*x,((self.altTela/self.divAlt)*y),self.largTela/self.divLarg,self.altTela/self.divAlt))
-                x+=1
-            x=0
-            y+=1
-        pygame.display.flip()   
-
+            print(self.Xpoints,self.Ypoints)
 
 
 # Create the main window
@@ -398,6 +376,8 @@ def start_pepe_function():
   height = int(height_text.get())
 
   StartPepeFunction(width, height)
+  
+      
   
 
 start_button = tk.Button(text="Make Pepes", command=start_pepe_function)
