@@ -1,14 +1,15 @@
 import tkinter as tk
 import tkinter.colorchooser as colorchooser
 
+
 FinalPepeColors = ["#F5E2AA", "#F2C546", "#DC7648", "#E9B8CE", "#83C1CE", "#5A72EC"]
 
-Color1 = "#F5E2AA"
-Color2 = "#F2C546"
-Color3 = "#DC7648"
-Color4 = "#E9B8CE"
-Color5 = "#83C1CE"
-Color6 = "#5A72EC"
+Color1 = FinalPepeColors[0]
+Color2 = FinalPepeColors[1]
+Color3 = FinalPepeColors[2]
+Color4 = FinalPepeColors[3]
+Color5 = FinalPepeColors[4]
+Color6 = FinalPepeColors[5]
 
 class MainWindow(tk.Tk):
     def __init__(self):
@@ -106,5 +107,5 @@ class MainWindow(tk.Tk):
         print(self.color_picker6['bg'])
 
 # Create the main window and run the Tkinter event loop
-main_window = MainWindow()
-main_window.mainloop()
+# main_window = MainWindow()
+# main_window.mainloop()

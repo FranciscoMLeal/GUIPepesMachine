@@ -3,19 +3,133 @@ import tkinter.colorchooser as colorchooser
 import pygame
 import random
 from PepePatterns import PatternStyles
+#import ColorPicker as CP
 
 Filletes = []
 FilletesCor = []    
 PatColorHolder = []
 CorFundoHolder = ["#000000","#000000"]
 CorPatternHolder = ["#000000","#000000"]
-FinalPepeColors = ["#F5E2AA", "#F2C546", "#DC7648", "#E9B8CE", "#83C1CE", "#5A72EC", "#3164A6", "#D65267", "#0C0103"]
+FinalPepeColors = ["#F5E2AA", "#F2C546", "#DC7648", "#E9B8CE", "#83C1CE", "#5A72EC"]
 ADN = []
 ShapeComandHolder = ["tt"]
 ShapeComandList = ["gr","pq","l","lp","dl","s","cp","t","tp","tgp","zz","vlp","hlp","45","lil","pepes"]
 ShapeComandSquaresList = ["c","st","gr","pq","cic","l","lp","dl","s","cp","t","tp","tgp","zz","vlp","hlp","45","lil","sqi","pepes"] ## "c","cic,"st","sqi" PATTERNS MISSING HERE
 choosePat = False
 
+
+#########################################
+#########################################
+#########################################
+#########################################
+
+class MainWindow(tk.Tk):
+    def __init__(self):
+        tk.Tk.__init__(self)
+        self.title("Color Picker")
+
+        # Create the color picker button
+        Color1 = FinalPepeColors[0]
+        Color2 = FinalPepeColors[1]
+        Color3 = FinalPepeColors[2]
+        Color4 = FinalPepeColors[3]
+        Color5 = FinalPepeColors[4]
+        Color6 = FinalPepeColors[5]
+        
+        self.color1 = Color1
+        self.color_picker1 = tk.Button(self, text="Pick Color", command=self.pick_color1)
+        self.color_picker1.configure(bg=Color1, fg=Color1)
+        self.color_picker1.pack()
+        
+        self.color2 = Color2
+        self.color_picker2 = tk.Button(self, text="Pick Color", command=self.pick_color2)
+        self.color_picker2.configure(bg=Color2, fg=Color2)
+        self.color_picker2.pack()
+        
+        self.color3 = Color3
+        self.color_picker3 = tk.Button(self, text="Pick Color", command=self.pick_color3)
+        self.color_picker3.configure(bg=Color3, fg=Color3)
+        self.color_picker3.pack()
+        
+        self.color4 = Color4
+        self.color_picker4 = tk.Button(self, text="Pick Color", command=self.pick_color4)
+        self.color_picker4.configure(bg=Color4, fg=Color4)
+        self.color_picker4.pack()
+        
+        self.color5 = Color5
+        self.color_picker5 = tk.Button(self, text="Pick Color", command=self.pick_color5)
+        self.color_picker5.configure(bg=Color5, fg=Color5)
+        self.color_picker5.pack()
+        
+        self.color6 = Color6
+        self.color_picker6 = tk.Button(self, text="Pick Color", command=self.pick_color6)
+        self.color_picker6.configure(bg=Color6, fg=Color6)
+        self.color_picker6.pack()
+
+        # Create the Print button
+        self.print_button = tk.Button(self, text="Print Color", command=self.print_color)
+
+        # Pack the widgets
+        # self.color_picker.pack()
+        self.print_button.pack()
+
+    def pick_color1(self):
+        # Open the color chooser dialog
+        color = colorchooser.askcolor(self.color1)[1]
+        # Update the color of the color picker button
+        self.color_picker1.configure(bg=color, fg=color)
+        self.color = color
+        
+    def pick_color2(self):
+        # Open the color chooser dialog
+        color = colorchooser.askcolor(self.color2)[1]
+        # Update the color of the color picker button
+        self.color_picker2.configure(bg=color, fg=color)
+        self.color = color
+
+    def pick_color3(self):
+        # Open the color chooser dialog
+        color = colorchooser.askcolor(self.color3)[1]
+        # Update the color of the color picker button
+        self.color_picker3.configure(bg=color, fg=color)
+        self.color = color
+        
+    def pick_color4(self):
+        # Open the color chooser dialog
+        color = colorchooser.askcolor(self.color4)[1]
+        # Update the color of the color picker button
+        self.color_picker4.configure(bg=color, fg=color)
+        self.color = color
+        
+    def pick_color5(self):
+        # Open the color chooser dialog
+        color = colorchooser.askcolor(self.color5)[1]
+        # Update the color of the color picker button
+        self.color_picker5.configure(bg=color, fg=color)
+        self.color = color
+        
+    def pick_color6(self):
+        # Open the color chooser dialog
+        color = colorchooser.askcolor(self.color6)[1]
+        # Update the color of the color picker button
+        self.color_picker6.configure(bg=color, fg=color)
+        self.color = color
+        
+    def print_color(self):
+        # Print the color of the color picker button
+        print(self.color_picker1['bg'])
+        print(self.color_picker2['bg'])
+        print(self.color_picker3['bg'])
+        print(self.color_picker4['bg'])
+        print(self.color_picker5['bg'])
+        print(self.color_picker6['bg'])
+        global FinalPepeColors
+        FinalPepeColors = [self.color_picker1['bg'],self.color_picker2['bg'],self.color_picker3['bg'],self.color_picker4['bg'],self.color_picker5['bg'],self.color_picker6['bg']]
+
+#########################################
+#########################################
+#########################################
+#########################################
 
 class PepeAI:
     def __init__(self):
@@ -254,21 +368,21 @@ window.title("PepeMachine GUI")
 
 # Create a label for the width text box
 width_label = tk.Label(text="Width:")
-width_label.pack()
+width_label.grid(row=0, column=1, sticky='W')
 
 # Create a text box for the width value
 width_text = tk.Entry()
 width_text.insert(0, "500")
-width_text.pack()
+width_text.grid(row=0, column=2, sticky='W')
 
 # Create a label for the height text box
 height_label = tk.Label(text="Height:")
-height_label.pack()
+height_label.grid(row=1, column=1, sticky='W')
 
 # Create a text box for the height value
 height_text = tk.Entry()
 height_text.insert(0, "500")
-height_text.pack()
+height_text.grid(row=1, column=2, sticky='W')
 
 # Create a button to start the StartPepeFunction
 def start_pepe_function():
@@ -280,78 +394,25 @@ def start_pepe_function():
   
 
 start_button = tk.Button(text="Start", command=start_pepe_function)
-start_button.pack()
+start_button.grid(row=2, column=1, sticky='W')
+
+def change_colors():
+    colors_window = MainWindow()
+    colors_window.mainloop()
+    print("Change Colors")
+
+
+color_button = tk.Button(text="Change Colors", command=change_colors)
+color_button.grid(row=2, column=2, sticky='W')
 
 # Colors
 x = 0
 while x < len(FinalPepeColors):
-    color_label = tk.Label(window, bg=FinalPepeColors[x], height=1, width=22)
+    color_label = tk.Label(window, bg=FinalPepeColors[x], height=1, width=23)
+    color_label.grid(row=3 + x, column=1, sticky='W')
+    color_label2 = tk.Label(window, bg=FinalPepeColors[x], height=1, width=23)
+    color_label2.grid(row=3 + x, column=2, sticky='W')
     x = x + 1
-    color_label.pack()
-
-
-
-
-
-
-# Create a label for the controller
-#controller_label = tk.Label(text="Number of colors:")
-#controller_label.pack()
-
-# Create a drop-down menu for the controller
-# The options are the numbers from 5 to 15
-#controller_options = [str(i) for i in range(5, 16)]
-#controller_var = tk.StringVar(window)
-#controller_var.set(controller_options[0])  # Set the default option
-#controller_menu = tk.OptionMenu(window, controller_var, *controller_options)
-#controller_menu.pack()
-
-
-
-
-
-#def choose_color(color_label):
-#  # Open the color picker and get the chosen color
-#  chosen_color = colorchooser.askcolor()[1]
-#
-#  # Set the background color of the color label to the chosen color
-#  color_label.config(bg=chosen_color)
-#
-#
-#
-#
-#
-#
-#def start_colors():
-#    colornumb = int(controller_var.get())
-#    x = 0
-#    color_window = tk.Toplevel()
-#
-#  # Create the color picker buttons and color labels
-#    while x < colornumb:
-#        button1 = tk.Button(color_window, text=FinalPepeColors[x], command=lambda: choose_color(label1))
-#        label1 = tk.Label(color_window, width=5, height=5)
-#        button1.pack()
-#        label1.pack()
-#        x = x + 1
-    
-    #button1 = tk.Button(color_window, text="Choose Color 1", command=lambda: choose_color(label1))
-    #label1 = tk.Label(color_window, width=5, height=5)
-    #button2 = tk.Button(color_window, text="Choose Color 2", command=lambda: choose_color(label2))
-    #label2 = tk.Label(color_window, width=5, height=5)
-    #button3 = tk.Button(color_window, text="Choose Color 3", command=lambda: choose_color(label3))
-    #label3 = tk.Label(color_window, width=5, height=5)
-    #
-    #button1.pack()
-    #label1.pack()
-    #button2.pack()
-    #label2.pack()
-    #button3.pack()
-    #label3.pack()
-
-#start_colors_button = tk.Button(text="Start Colors", command=start_colors)
-#start_colors_button.pack()
-
 
 # Run the main loop
 window.mainloop()
