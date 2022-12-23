@@ -3,6 +3,7 @@ import tkinter.colorchooser as colorchooser
 import pygame
 import random
 from PepePatterns import PatternStyles
+import colorlabel as CL
 #import ColorPicker as CP
 
 Filletes = []
@@ -67,7 +68,7 @@ class MainWindow(tk.Tk):
         self.color_picker6.pack()
 
         # Create the Print button
-        self.print_button = tk.Button(self, text="Print Color", command=self.print_color)
+        self.print_button = tk.Button(self, text="SAVE", command=self.print_color)
 
         # Pack the widgets
         # self.color_picker.pack()
@@ -125,7 +126,12 @@ class MainWindow(tk.Tk):
         print(self.color_picker6['bg'])
         global FinalPepeColors
         FinalPepeColors = [self.color_picker1['bg'],self.color_picker2['bg'],self.color_picker3['bg'],self.color_picker4['bg'],self.color_picker5['bg'],self.color_picker6['bg']]
-
+        ###update here
+        updatecolor = CL.colorlabels.start(window, FinalPepeColors)
+        
+        
+        
+        
 #########################################
 #########################################
 #########################################
@@ -405,14 +411,24 @@ def change_colors():
 color_button = tk.Button(text="Change Colors", command=change_colors)
 color_button.grid(row=2, column=2, sticky='W')
 
+#def update_colors(): 
+#    
+#    updatecolor = CL.colorlabels.start(window, FinalPepeColors)
+#
+#
+#updcolor_button = tk.Button(text="Update Colors", command=update_colors)
+#updcolor_button.grid(row=2, column=3, sticky='W')
+
 # Colors
-x = 0
-while x < len(FinalPepeColors):
-    color_label = tk.Label(window, bg=FinalPepeColors[x], height=1, width=23)
-    color_label.grid(row=3 + x, column=1, sticky='W')
-    color_label2 = tk.Label(window, bg=FinalPepeColors[x], height=1, width=23)
-    color_label2.grid(row=3 + x, column=2, sticky='W')
-    x = x + 1
+
+makecolors = CL.colorlabels.start(window,FinalPepeColors)
+#x = 0
+#while x < len(FinalPepeColors):
+#    color_label = tk.Label(window, bg=FinalPepeColors[x], height=1, width=23)
+#    color_label.grid(row=3 + x, column=1, sticky='W')
+#    color_label2 = tk.Label(window, bg=FinalPepeColors[x], height=1, width=23)
+#    color_label2.grid(row=3 + x, column=2, sticky='W')
+#    x = x + 1
 
 # Run the main loop
 window.mainloop()
