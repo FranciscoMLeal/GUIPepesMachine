@@ -368,6 +368,7 @@ class GridGenerator:
 
 # Create the main window
 window = tk.Tk()
+pygame.init()
 
 # Set the window title
 window.title("PepeMachine GUI")
@@ -378,7 +379,7 @@ width_label.grid(row=0, column=1, sticky='W')
 
 # Create a text box for the width value
 width_text = tk.Entry()
-width_text.insert(0, "500")
+width_text.insert(0, pygame.display.Info().current_w)
 width_text.grid(row=0, column=2, sticky='W')
 
 # Create a label for the height text box
@@ -387,10 +388,10 @@ height_label.grid(row=1, column=1, sticky='W')
 
 # Create a text box for the height value
 height_text = tk.Entry()
-height_text.insert(0, "500")
+height_text.insert(0, pygame.display.Info().current_h)
 height_text.grid(row=1, column=2, sticky='W')
 
-# Create a button to start the StartPepeFunction
+# Create a button to start the Start PepeFunction
 def start_pepe_function():
   # Get the width and height values from the text boxes
   width = int(width_text.get())
@@ -399,8 +400,9 @@ def start_pepe_function():
   StartPepeFunction(width, height)
   
 
-start_button = tk.Button(text="Start", command=start_pepe_function)
+start_button = tk.Button(text="Make Pepes", command=start_pepe_function)
 start_button.grid(row=2, column=1, sticky='W')
+
 
 def change_colors():
     colors_window = MainWindow()

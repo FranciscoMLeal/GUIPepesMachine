@@ -31,3 +31,7 @@ class colorlabels():
         color_label5.grid(row=3 + 5, column=1, sticky='W')
         color_label52 = tk.Label(window, bg=FinalPepeColors[5], height=1, width=23)
         color_label52.grid(row=3 + 5, column=2, sticky='W')
+        
+    def update(window, colorlabel1, colorlabel2, newcolor):
+        colorlabel1.configure(bg=newcolor)
+        colorlabel2.configure(bg=newcolor)
